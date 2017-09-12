@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "WhoView",
+  "version": "0.1",
+  "description": "Who is viewing your Scratch projects?",
+  "icons": {"16": "whoview-16.png",
+            "19": "whoview-19.png",
+            "24": "whoview-24.png",
+           "100": "whoview-100.png"},
+  "browser_action": {          
+                "default_icon": {
+            "19": "whoview-19.png",
+            "24": "whoview-24.png"
+          },
+          "default_title": "Who has viewed this project?",
+          "default_popup": "options.html"},
+
+  "background": {
+    "scripts": ["events.js"],
+    "persistent": false
+  },
+  "content_scripts": [{"matches": ["https://scratch.mit.edu/projects/*"],"js": ["whoview.js"]}],
+  "homepage_url": "https://kyleplogames.com/whoview",
+  "permissions": ["tabs","https://scratch.mit.edu/projects/*","https://kyleplogames.com/whoview/*","storage","contextMenus"]
+}

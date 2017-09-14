@@ -14,12 +14,15 @@
           },
           "default_title": "Who has viewed this project?",
           "default_popup": "options.html"},
+"options_ui": {
+    "page": "options-v2.html",
+    "chrome_style": true
+  },
 
   "background": {
     "scripts": ["events.js"],
     "persistent": false
   },
   "content_scripts": [{"matches": ["https://scratch.mit.edu/projects/*"],"js": ["whoview.js"]}],
-  "homepage_url": "https://kyleplogames.com/whoview",
-  "permissions": ["tabs","https://scratch.mit.edu/projects/*","https://kyleplogames.com/whoview/*","storage","contextMenus"]
+  "permissions": ["tabs","https://scratch.mit.edu/projects/*","storage","contextMenus"]
 }

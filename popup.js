@@ -1,9 +1,11 @@
-document.getElementById("close").addEventListener("click",function (){window.close()});
-document.getElementById("private").addEventListener("change",function (){updatePrivate();});
-chrome.storage.local.get("private",function (items){document.getElementById("private").checked = items.private});
-function updatePrivate(){
+document.getElementById("private").addEventListener("change",updatePrivate);
+if(location.pathname === "/options-v2.html"){document.getElementById("comment").addEventListener("blur",updateComment);};
+chrome.storage.local.get({private:false,comment:""},function (items){document.getElementById("private").checked = items.private;document.getElementById("comment").value = items.comment});
+function updatePrivate(event){
 chrome.storage.local.set({private:event.target.checked});
 chrome.contextMenus.update("private", {checked:event.target.checked})}
+function updateComment(event){
+chrome.storage.local.set({comment:event.target.value});}
 if(location.pathname === "/whoview.html"){function getQueryParam(q){
 var params = location.search.split("&");
 params[0] = params[0].slice(1);
